@@ -11,10 +11,10 @@ class Dynastie(models.Model):
     ID = models.AutoField(primary_key=True, editable=False)
     nazwa = models.CharField(verbose_name="Nazwa dynastii",
                              null=False, max_length=70)
-    ppanowanie = models.DateTimeField(
-        auto_now_add=False, verbose_name="Data rozpoczecia", null=False)
-    kpanowanie = models.DateTimeField(
-        auto_now_add=False, verbose_name="Data zakonczenia", null=False)
+    ppanowanie = models.IntegerField(
+         verbose_name="Data rozpoczecia", null=False)
+    kpanowanie = models.IntegerField(
+         verbose_name="Data zakonczenia", null=False)
         
 
 
@@ -24,10 +24,10 @@ class Krolowie(models.Model):
     ID = models.AutoField(primary_key=True, editable=False)
     imie = models.CharField(verbose_name="Imię króla",
                             null=False, max_length=70)
-    ppanowanie = models.DateTimeField(
-        auto_now_add=False, verbose_name="Data rozpoczecia panowania", null=False)
-    kpanowanie = models.DateTimeField(
-        auto_now_add=False, verbose_name="Data zakonczenia panowania", null=False)
+    ppanowanie = models.IntegerField(
+        verbose_name="Data rozpoczecia panowania", null=False)
+    kpanowanie = models.IntegerField(
+        verbose_name="Data zakonczenia panowania", null=False)
     dynastia = models.ForeignKey(to=Dynastie, on_delete=models.DO_NOTHING)
 
 
