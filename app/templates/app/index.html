@@ -1,0 +1,29 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block content %}
+    
+            <nav class="navbar navbar-expand-lg navbar-light">
+                <button type="button" id="sidebarCollapse" style="z-index:2;background-color:#d45144ff !important; border-radius:50%; width:50px;height:50px; border:0;" class="btn btn-info">
+                    <img src="{% static "app/photos/rarr.png" %}" id="sdb" style="width:17px;" />
+                </button>
+            </nav>
+            {% for i in monety %}
+           <a href="/moneta/{{ i.0 }}">
+           <div class="conpoz" style="background-image: url('{% static 'app/photos/holder.png' %}');">
+               <h1>{{ i.0 }}</h1> 
+               <div onMouseOver="this.style.backgroundImage='url({% get_media_prefix %}{{ i.3 }})'"
+        onMouseOut="this.style.backgroundImage='url({% get_media_prefix %}{{ i.2 }})'" 
+        class="photo" style="background-image:url({% get_media_prefix %}{{ i.2 }});">
+                </div>
+                <h2>{{ i.1 }}</h2>
+             </div></a>
+            {% endfor %}
+
+
+            <div id="toolbar">
+                <input id="search" class="form-control" placeholder="Opis"  /><button class="btn btn-secondary" id="filtr" type="button" data-toggle="modal" data-target="#modalLoginForm">Filtry</button>
+                <div style="clear:both; width:100%; height:30px; background: url('{% static "app/photos/dwn.png" %}'); background-repeat: no-repeat; background-position-x: center; background-size: 3%; background-position-y: center;"></div>
+            </div>
+        
+
+{% endblock %}

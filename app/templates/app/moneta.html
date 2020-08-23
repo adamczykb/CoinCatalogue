@@ -1,0 +1,25 @@
+{% extends "app/layout.html" %}
+{% load static %}
+{% block content %}
+    <nav class="navbar navbar-expand-lg navbar-light">
+                <button type="button" id="sidebarCollapse" style="z-index:2;background-color:#d45144ff !important; border-radius:50%; width:50px;height:50px; border:0;" class="btn btn-info">
+                    <img src="{% static "app/photos/rarr.png" %}" id="sdb" style="width:17px;" />
+                </button>
+            </nav>
+    <div style="width:100%; height:350px;"><div id="ph1" style="background-image:url({% get_media_prefix %}{{ moneta.awers }})"></div>
+    <div id="ph2"  style="background-image:url({% get_media_prefix %}{{ moneta.rewers }})"></div> 
+    <div id="title"><div id="id">#{{ moneta.Nr }}</div><div id="name">{{moneta.nazwa}}</div>
+    <div class="subinfo">Rok: <span style="color: gray; font-weight: bold;">{{moneta.rok}}</span></div>
+    <div class="subinfo">⌀: <span style="color: gray; font-weight: bold;">{{moneta.srednica}}mm</span></div>
+    <div class="subinfo">Waga: <span style="color: gray; font-weight: bold;">{{moneta.waga}}g</span></div>
+    <div class="subinfo">Materiał: <span style="color: gray; font-weight: bold;">{{material.nazwa}} ({{material.chemia}})</span></div>
+    <div class="subinfo">Stan: <span style="color: gray; font-weight: bold;">{{stan.skrot}}</span></div>
+    <div class="subinfo">Rzadkość: <span style="color: gray; font-weight: bold;">{{rzadkosc.skrot}}</span></div>
+    <div class="subinfo">Mennica: <span style="color: gray; font-weight: bold;">{{mennica.nazwa}}</span></div>
+    <div class="subinfo">Cena zakupu: <span style="color: gray; font-weight: bold;">{{moneta.cenaz}}zł</span></div>
+    <div class="subinfo">Cena katalogowa: <span style="color: gray; font-weight: bold;">{{moneta.cena}}€</span></div>
+    </div>
+    <div class="info">Panowanie: <span style="color: gray; font-weight: bold;">{{panowanie.imie}} ({{dynastia.nazwa}})</span></div>      
+    <div class="info">Opis: <span style="color: gray; font-weight: bold;">{{moneta.opis}}</span></div>    
+
+{% endblock %}
