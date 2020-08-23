@@ -88,7 +88,7 @@ class Moneta(models.Model):
     katalog = models.ForeignKey(
         to=Katalog, verbose_name="Do jakiego katalogu należy", on_delete=models.DO_NOTHING, blank=True,null=True)
     panowanie = models.ForeignKey(
-        to=Krolowie, on_delete=models.DO_NOTHING, blank=True, null=True)
+        to=Krolowie, on_delete=models.DO_NOTHING)
     rewers = models.ImageField(verbose_name="Rewers", blank=True, null=True)
     awers = models.ImageField(verbose_name="Awers", blank=True, null=True)
     rant = models.CharField(verbose_name="opis", max_length=255, blank=True, null=True)
