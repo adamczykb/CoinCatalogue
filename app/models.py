@@ -74,7 +74,7 @@ class Katalog(models.Model):
         return self.nazwa
     ID = models.AutoField(primary_key=True, editable=False)
     nazwa = models.CharField(
-        verbose_name="Nazwa katalogu", max_length=70, null=True)
+        verbose_name="Nazwa katalogu", max_length=70)
 
 
 class Moneta(models.Model):
@@ -83,28 +83,29 @@ class Moneta(models.Model):
     Nr = models.AutoField(primary_key=True, editable=False,
                           verbose_name="Numer katalogowy")
     nazwa = models.CharField(
-        verbose_name="Nazwa monety", max_length=70, null=True)
-    opis = models.CharField(verbose_name="opis", max_length=70, null=True)
+        verbose_name="Nazwa monety", max_length=255, blank=False,null=True)
+    opis = models.CharField(verbose_name="opis", max_length=255, blank=True,null=True)
     katalog = models.ForeignKey(
-        to=Katalog, verbose_name="Do jakiego katalogu należy", on_delete=models.SET_NULL, null=True)
+        to=Katalog, verbose_name="Do jakiego katalogu należy", on_delete=models.DO_NOTHING, blank=True,null=True)
     panowanie = models.ForeignKey(
-        to=Krolowie, on_delete=models.SET_NULL, null=True)
-    awers = models.ImageField(verbose_name="Awers", null=True)
-    rewers = models.ImageField(verbose_name="Rewers", null=True)
-    rant = models.ImageField(verbose_name="Rant", null=True)
-    rok = models.IntegerField(verbose_name="Rok", null=True)
+        to=Krolowie, on_delete=models.DO_NOTHING, blank=True, null=True)
+    rewers = models.ImageField(verbose_name="Rewers", blank=True, null=True)
+    awers = models.ImageField(verbose_name="Awers", blank=True, null=True)
+    rant = models.CharField(verbose_name="opis", max_length=255, blank=True, null=True)
+    rok = models.IntegerField(verbose_name="Rok", blank=True, null=True)
     material = models.ForeignKey(
-        to=Material, verbose_name="Materiał", on_delete=models.SET_NULL, null=True)
-    srednica = models.IntegerField(verbose_name="Średnica w mm", null=True)
-    waga = models.IntegerField(verbose_name="Waga w gramach", null=True)
-    stan = models.ForeignKey(to=Stan, on_delete=models.SET_NULL, null=True)
+        to=Material, verbose_name="Materiał", on_delete=models.DO_NOTHING, blank=True, null=True)
+    srednica = models.IntegerField(verbose_name="Średnica w mm", blank=True, null=True)
+    waga = models.FloatField(verbose_name="Waga w gramach", blank=True)
+    stan = models.ForeignKey(to=Stan, on_delete=models.DO_NOTHING, blank=True, null=True)
     mennica = models.ForeignKey(
-        to=Mennica, on_delete=models.SET_NULL, null=True)
-    autor = models.CharField(verbose_name="autor", null=True, max_length=70)
+        to=Mennica, on_delete=models.DO_NOTHING, blank=True)
+    autor = models.CharField(verbose_name="autor", max_length=255, blank=True, null=True)
     rzadkosc = models.ForeignKey(
-        to=Rzadkosc, on_delete=models.SET_NULL, null=True)
-    cena = models.IntegerField(verbose_name="Cena katalogowa w €", null=True)
-    cenaz = models.IntegerField(verbose_name="Cena zapłacona w zł", null=True)
+        to=Rzadkosc, on_delete=models.DO_NOTHING, blank=True, null=True)
+    cena = models.FloatField(verbose_name="Cena katalogowa w €",  blank=True, null=True)
+    cenaz = models.FloatField(verbose_name="Cena zapłacona w zł", blank=True, null=True)
+    pochodzenie = models.CharField(verbose_name="url", max_length=255, blank=True, null=True)
 
 
 # Create your models here.
