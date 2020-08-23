@@ -21,7 +21,7 @@ class Dynastie(models.Model):
 class Krolowie(models.Model):
     def __str__(self):
         return  self.imie
-    ID = models.AutoField(primary_key=True, editable=False,null=True)
+    ID = models.AutoField(primary_key=True, editable=False)
     imie = models.CharField(verbose_name="Imię króla",
                             null=False, max_length=70)
     ppanowanie = models.DateTimeField(
